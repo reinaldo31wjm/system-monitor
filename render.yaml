@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: system-monitor
+    runtime: node
+    plan: free
+    buildCommand: echo "Sem dependências para instalar"
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SHOW_HOST_DETAILS
+        value: "false"
