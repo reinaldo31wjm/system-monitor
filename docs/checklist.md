@@ -1,6 +1,6 @@
 # Checklist de Revisão
 
-Use esta lista antes de integrar alterações ou publicar uma nova versão do System Monitor.
+Use esta lista antes de integrar alterações ou publicar uma nova versão.
 
 ## Projeto e requisitos
 
@@ -29,7 +29,7 @@ Use esta lista antes de integrar alterações ou publicar uma nova versão do Sy
 
 - [ ] Não há senhas, tokens, chaves privadas ou dados pessoais reais.
 - [ ] Exemplos de configuração usam valores fictícios.
-- [ ] Informações do host são tratadas como potencialmente sensíveis.
+- [ ] Informações de host são tratadas como potencialmente sensíveis.
 - [ ] Alterações em arquivos estáticos preservam as validações do servidor.
 
 ## Deploy e manutenção
@@ -40,6 +40,3 @@ Use esta lista antes de integrar alterações ou publicar uma nova versão do Sy
 - [ ] A estrutura de diretórios está atualizada.
 - [ ] A documentação foi revisada junto com o código alterado.
 
-## Encerramento
-
-Antes de finalizar a revisão, confirme que o README e os documentos do diretório `docs/` refletirem o estado efetivo do projeto e não tratem como implementados recursos que não existem em código.

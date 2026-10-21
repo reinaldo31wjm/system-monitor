@@ -1,12 +1,12 @@
 # System Monitor
 
-> Painel de observabilidade de servidor em tempo real, com interface **Chuva Cyberpunk**, desenvolvido em Node.js nativo.
+> Painel de observabilidade de servidor em tempo real, com interface Chuva Cyberpunk, desenvolvido em Node.js nativo.
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.15%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?logo=render&logoColor=111827)](https://render.com/)
 [![Licença](https://img.shields.io/badge/licença-projeto%20acadêmico-6366f1)](#licença)
 
-O **System Monitor** apresenta indicadores do ambiente em que está sendo executado, permitindo acompanhar CPU, memória, armazenamento, carga do sistema, uptime e informações do processo Node.js. O projeto foi construído sem Express ou outras dependências de runtime, usando apenas módulos nativos do Node.js.
+O System Monitor apresenta indicadores do ambiente em que está sendo executado, permitindo acompanhar CPU, memória, armazenamento, carga do sistema, uptime e informações do processo Node.js.
 
 **Acesso público:** [system-monitor](https://system-monitor-i16u.onrender.com)
 
@@ -31,7 +31,7 @@ O **System Monitor** apresenta indicadores do ambiente em que está sendo execut
 
 ## Visão geral
 
-O sistema foi pensado como um painel simples para diagnóstico e observabilidade. A aplicação coleta métricas no servidor, disponibiliza os dados em JSON e atualiza a interface automaticamente a cada três segundos.
+O sistema foi pensado como um painel simples para diagnóstico e observabilidade. A aplicação coleta métricas no servidor, disponibiliza os dados em JSON e atualiza a interface automaticamente.
 
 A interface classifica os indicadores em três níveis:
 
@@ -52,7 +52,7 @@ A interface classifica os indicadores em três níveis:
 - Uptime do servidor e da aplicação.
 - Informações do host, sistema operacional, arquitetura, versão do Node.js e PID.
 - Interfaces de rede e endereços IPv4.
-- Aba **Diagnóstico**, com histórico dos últimos três minutos e registro de mudanças de nível.
+- Aba Diagnóstico, com histórico dos últimos três minutos e registro de mudanças de nível.
 - Atualização automática, botão de atualização manual, pausa e aviso de falha de conexão.
 - Navegação por teclado e suporte a `prefers-reduced-motion`.
 - Tema visual Chuva Cyberpunk com chuva em canvas, paralaxe, respingos e cores associadas ao nível de carga.
@@ -74,7 +74,7 @@ Clone o repositório e entre na pasta do projeto:
 
 ```bash
 git clone <URL_DO_REPOSITÓRIO>
-cd Sistemas-Operacionais
+cd system-monitor
 ```
 
 Como o projeto não possui dependências externas, não é necessário executar `npm install`. Inicie o servidor com:
@@ -89,7 +89,7 @@ Para desenvolvimento, usando o modo de observação do Node.js:
 npm run dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no navegador. Para usar outra porta, defina a variável `PORT`:
+Abra <http://localhost:3000> no navegador. Para usar outra porta, defina a variável `PORT`:
 
 ```bash
 PORT=8080 npm start
@@ -118,7 +118,7 @@ Entrega o painel web.
 
 ### `GET /api/stats`
 
-Retorna as métricas atuais em JSON. Entre os campos disponíveis estão `load1`, `load5`, `load15`, `cores`, `loadPercent`, `usedMem`, `freeMem`, `totalMem`, `memUsagePercent`, `processMem`, `rss`, `uptime` e `disk`.
+Retorna as métricas atuais em JSON. Entre os campos disponíveis estão `load1`, `load5`, `load15`, `cores`, `loadPercent`, `usedMem`, `freeMem`, `totalMem`, `memUsagePercent`, `processMem`, `rss` e `disk`.
 
 Exemplo:
 
@@ -142,7 +142,7 @@ Os métodos aceitos são `GET` e `HEAD`. Outros métodos retornam `405 Method No
 A aplicação segue uma arquitetura pequena, modular e orientada a responsabilidades:
 
 ```text
-Sistemas-Operacionais/
+system-monitor/
 ├── server.js                         # Servidor HTTP, rotas e segurança
 ├── lib/
 │   ├── metrics.js                    # Coleta e cache de métricas
@@ -153,29 +153,30 @@ Sistemas-Operacionais/
 │       ├── app.js                    # Interface, abas, gráficos e atualizações
 │       └── rain.js                   # Animação da chuva em canvas
 ├── docs/
-│   ├── ARQUITETURA.md                # Visão técnica e fluxo de dados
-│   ├── DOCUMENTACAO-DE-PROJETO.md    # Objetivo, escopo e requisitos
-│   ├── API.md                         # Contrato da API e exemplos
-│   ├── PROCESSO-DEVOPS.md            # Validação, revisão e deploy
-│   ├── CHECKLIST.md                  # Lista de revisão
+│   ├── documentacao-de-projeto.md    # Contexto, escopo e requisitos
+│   ├── arquitetura.md                # Visão técnica e fluxo de dados
+│   ├── api.md                        # Contrato da API e exemplos
+│   ├── processo-devops.md            # Validação, revisão e deploy
+│   ├── checklist.md                 # Lista de revisão
 │   └── aulas/
-│       ├── Aula08-Documentacao-de-Software.pdf
+│       ├── aula08-documentacao-de-software.pdf
 │       └── resumo-aula-08-documentacao-de-software.md
 ├── package.json                      # Scripts e metadados
 ├── package-lock.json                 # Integridade do projeto npm
-└── render.yaml                       # Blueprint de implantação no Render
+├── render.yaml                       # Blueprint de implantação no Render
+└── README.md                         # Visão geral do projeto
 ```
 
-Para uma descrição técnica do fluxo de dados e das decisões de implementação, consulte [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md).
+Para uma descrição técnica do fluxo de dados e das decisões de implementação, consulte [docs/arquitetura.md](docs/arquitetura.md).
 
 ## Documentação técnica
 
 Os documentos complementares foram separados por finalidade para facilitar a manutenção e a revisão:
 
-- [`docs/DOCUMENTACAO-DE-PROJETO.md`](docs/DOCUMENTACAO-DE-PROJETO.md): contexto, escopo, requisitos funcionais, requisitos não funcionais e critérios de aceitação.
-- [`docs/API.md`](docs/API.md): rotas, métodos, status, campos e exemplos de resposta.
-- [`docs/PROCESSO-DEVOPS.md`](docs/PROCESSO-DEVOPS.md): fluxo de desenvolvimento, validação local, revisão e publicação.
-- [`docs/CHECKLIST.md`](docs/CHECKLIST.md): conferência antes de integrar ou publicar alterações.
+- [docs/documentacao-de-projeto.md](docs/documentacao-de-projeto.md): contexto, escopo, requisitos funcionais, requisitos não funcionais e critérios de aceitação.
+- [docs/api.md](docs/api.md): rotas, métodos, status, campos e exemplos de resposta.
+- [docs/processo-devops.md](docs/processo-devops.md): fluxo de desenvolvimento, validação local, revisão e publicação.
+- [docs/checklist.md](docs/checklist.md): conferência antes de integrar ou publicar alterações.
 
 Os documentos distinguem o que está implementado do que permanece fora do escopo. No momento, o projeto não possui suíte automatizada de testes, banco de dados, autenticação ou alertas persistentes.
 
@@ -210,7 +211,7 @@ Após a publicação, confira os logs e acesse a URL `.onrender.com` gerada pela
 
 ## Documentação da disciplina
 
-Os materiais usados para documentar este projeto estão disponíveis em [`docs/aulas/`](docs/aulas/):
+Os materiais usados para documentar este projeto estão disponíveis em [docs/aulas/](docs/aulas/):
 
 - [Aula 08 — Documentação de Software (PDF)](docs/aulas/Aula08-Documentacao-de-Software.pdf)
 - [Resumo da Aula 08 (Markdown)](docs/aulas/resumo-aula-08-documentacao-de-software.md)
@@ -219,7 +220,7 @@ Esses materiais orientam a documentação do objetivo, escopo, tecnologias, arqu
 
 ## Segurança
 
-O servidor aplica medidas básicas de segurança, incluindo Content Security Policy, `X-Content-Type-Options`, `Referrer-Policy`, proteção contra path traversal, validação de arquivos estáticos, ETag e cache controlado.
+O servidor aplica medidas básicas de segurança, incluindo Content Security Policy, `X-Content-Type-Options`, `Referrer-Policy`, proteção contra path traversal, validação de arquivos estáticos e cabeçalhos apropriados para respostas HTTP.
 
 Informações sensíveis não devem ser incluídas neste repositório. Em especial, não faça commit de senhas, tokens, chaves de API, arquivos `.env` preenchidos ou detalhes restritos de infraestrutura.
 
@@ -234,3 +235,4 @@ Informações sensíveis não devem ser incluídas neste repositório. Em especi
 ## Licença
 
 Este repositório é um projeto acadêmico. A reutilização do código deve respeitar a finalidade educacional e os termos definidos pelos responsáveis pelo projeto.
+
