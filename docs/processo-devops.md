@@ -1,4 +1,4 @@
-# Processo de Desenvolvimento e Deploy
+# Processo de desenvolvimento e deploy
 
 ## Fluxo recomendado
 
@@ -28,7 +28,7 @@ Health check e inspeção dos logs
 
 As alterações devem ser pequenas e manter a separação entre servidor, coleta de métricas, renderização e frontend. Mudanças de comportamento precisam atualizar a documentação relevante, especialmente o README e os arquivos de arquitetura e API.
 
-## Git e Pull Requests
+## Git e pull requests
 
 Recomenda-se criar uma branch por alteração, usar commits com mensagens objetivas e abrir um Pull Request com quatro informações: problema, solução, arquivos afetados e forma de validação.
 

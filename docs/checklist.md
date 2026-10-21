@@ -1,4 +1,4 @@
-# Checklist de Revisão
+# Checklist de revisão
 
 Use esta lista antes de integrar alterações ou publicar uma nova versão.
 

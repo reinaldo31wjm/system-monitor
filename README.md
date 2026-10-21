@@ -1,12 +1,12 @@
 # System Monitor
 
-> Painel de observabilidade de servidor em tempo real, com interface Chuva Cyberpunk, desenvolvido em Node.js nativo.
+> Painel de observabilidade de servidor em tempo real com interface visual em estilo cyberpunk e execução em Node.js nativo.
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.15%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?logo=render&logoColor=111827)](https://render.com/)
 [![Licença](https://img.shields.io/badge/licença-projeto%20acadêmico-6366f1)](#licença)
 
-O System Monitor apresenta indicadores do ambiente em que está sendo executado, permitindo acompanhar CPU, memória, armazenamento, carga do sistema, uptime e informações do processo Node.js.
+O projeto System Monitor oferece uma visão em tempo real do ambiente em que o serviço está sendo executado. A aplicação coleta indicadores de CPU, memória, disco, carga do sistema, uptime e informações do processo Node.js e os apresenta em uma interface web atualizada automaticamente.
 
 **Acesso público:** [system-monitor](https://system-monitor-i16u.onrender.com)
 
@@ -17,7 +17,7 @@ O System Monitor apresenta indicadores do ambiente em que está sendo executado,
 - [Visão geral](#visão-geral)
 - [Recursos](#recursos)
 - [Tecnologias e requisitos](#tecnologias-e-requisitos)
-- [Executando localmente](#executando-localmente)
+- [Execução local](#execução-local)
 - [Configuração](#configuração)
 - [API e health check](#api-e-health-check)
 - [Arquitetura e estrutura](#arquitetura-e-estrutura)
@@ -31,9 +31,9 @@ O System Monitor apresenta indicadores do ambiente em que está sendo executado,
 
 ## Visão geral
 
-O sistema foi pensado como um painel simples para diagnóstico e observabilidade. A aplicação coleta métricas no servidor, disponibiliza os dados em JSON e atualiza a interface automaticamente.
+O System Monitor foi concebido como um painel leve para diagnóstico e observabilidade de infraestrutura. Ele coleta métricas no servidor, expõe os dados em formato JSON e atualiza a interface do navegador em intervalos regulares.
 
-A interface classifica os indicadores em três níveis:
+A aplicação classifica o estado dos indicadores em três níveis:
 
 | Nível | Faixa | Interpretação |
 | --- | ---: | --- |
@@ -41,23 +41,23 @@ A interface classifica os indicadores em três níveis:
 | Atenção | de 60% a 84% | Requer acompanhamento |
 | Crítico | 85% ou mais | Pode indicar sobrecarga |
 
-> Em serviços hospedados, as métricas representam o contêiner ou ambiente onde o app está rodando — não o computador de quem acessa o painel.
+> Em ambientes hospedados, as métricas representam o contêiner ou o ambiente de execução do aplicativo, e não o computador do usuário que acessa o painel.
 
 ## Recursos
 
 - Monitoramento de CPU, incluindo uso por núcleo e média geral.
-- Uso de memória RAM e memória do processo Node.js.
-- Armazenamento disponível e percentual utilizado quando o ambiente oferece essa informação.
-- Carga do sistema nos intervalos de 1, 5 e 15 minutos.
+- Acompanhamento de memória RAM e memória do processo Node.js.
+- Exibição de armazenamento disponível e percentual utilizado, quando o ambiente disponibiliza essa informação.
+- Carga do sistema em médias de 1, 5 e 15 minutos.
 - Uptime do servidor e da aplicação.
 - Informações do host, sistema operacional, arquitetura, versão do Node.js e PID.
-- Interfaces de rede e endereços IPv4.
-- Aba Diagnóstico, com histórico dos últimos três minutos e registro de mudanças de nível.
-- Atualização automática, botão de atualização manual, pausa e aviso de falha de conexão.
+- Visualização de interfaces de rede e endereços IPv4.
+- Aba de diagnóstico com histórico recente e registro de mudanças de nível.
+- Atualização automática, atualização manual, pausa e alerta de falha de conexão.
 - Navegação por teclado e suporte a `prefers-reduced-motion`.
-- Tema visual Chuva Cyberpunk com chuva em canvas, paralaxe, respingos e cores associadas ao nível de carga.
-- Controle de chuva com os modos Garoa, Chuva, Tempestade e Sincronizado.
-- Clima do servidor no cabeçalho e anéis de medição com pulso luminoso.
+- Tema visual em estilo Chuva Cyberpunk com efeitos em canvas, paralaxe, respingos e indicadores coloridos conforme a carga.
+- Controle do efeito visual com os modos Garoa, Chuva, Tempestade e Sincronizado.
+- Exibição de clima do servidor e anéis de medição com pulso luminoso.
 
 ## Tecnologias e requisitos
 
@@ -68,28 +68,28 @@ A interface classifica os indicadores em três níveis:
 - **Deploy:** Render, configurado por `render.yaml`.
 - **Dependências externas:** nenhuma para execução da aplicação.
 
-## Executando localmente
+## Execução local
 
-Clone o repositório e entre na pasta do projeto:
+Clone o repositório e acesse a pasta do projeto:
 
 ```bash
 git clone <URL_DO_REPOSITÓRIO>
 cd system-monitor
 ```
 
-Como o projeto não possui dependências externas, não é necessário executar `npm install`. Inicie o servidor com:
+Como o projeto não possui dependências externas, não é necessário executar `npm install`. Para iniciar o serviço:
 
 ```bash
 npm start
 ```
 
-Para desenvolvimento, usando o modo de observação do Node.js:
+Para desenvolvimento, com observação automática do Node.js:
 
 ```bash
 npm run dev
 ```
 
-Abra <http://localhost:3000> no navegador. Para usar outra porta, defina a variável `PORT`:
+Acesse <http://localhost:3000> no navegador. Para usar outra porta, defina a variável `PORT`:
 
 ```bash
 PORT=8080 npm start
@@ -114,7 +114,7 @@ Não publique senhas, tokens, chaves de API ou arquivos `.env` com valores reais
 
 ### `GET /`
 
-Entrega o painel web.
+Entrega a página principal do painel web.
 
 ### `GET /api/stats`
 
@@ -128,18 +128,18 @@ curl http://localhost:3000/api/stats
 
 ### `GET /healthz`
 
-Verifica se o processo está disponível. É utilizado pelo Render como health check.
+Verifica se o processo está disponível. Esse endpoint é usado como health check pelo Render.
 
 ```bash
 curl http://localhost:3000/healthz
 # {"status":"ok"}
 ```
 
-Os métodos aceitos são `GET` e `HEAD`. Outros métodos retornam `405 Method Not Allowed`.
+Os métodos aceitos são `GET` e `HEAD`. Demais métodos retornam `405 Method Not Allowed`.
 
 ## Arquitetura e estrutura
 
-A aplicação segue uma arquitetura pequena, modular e orientada a responsabilidades:
+A aplicação segue uma arquitetura compacta, modular e orientada à separação de responsabilidades:
 
 ```text
 system-monitor/
@@ -164,21 +164,22 @@ system-monitor/
 ├── package.json                      # Scripts e metadados
 ├── package-lock.json                 # Integridade do projeto npm
 ├── render.yaml                       # Blueprint de implantação no Render
-└── README.md                         # Visão geral do projeto
+├── README.md                         # Visão geral do projeto
+└── .gitignore                        # Exclusões do Git
 ```
 
-Para uma descrição técnica do fluxo de dados e das decisões de implementação, consulte [docs/arquitetura.md](docs/arquitetura.md).
+Para uma descrição detalhada do fluxo de dados e das decisões de implementação, consulte [docs/arquitetura.md](docs/arquitetura.md).
 
 ## Documentação técnica
 
-Os documentos complementares foram separados por finalidade para facilitar a manutenção e a revisão:
+Os documentos complementares foram organizados por finalidade para facilitar manutenção, revisão e compreensão do projeto:
 
 - [docs/documentacao-de-projeto.md](docs/documentacao-de-projeto.md): contexto, escopo, requisitos funcionais, requisitos não funcionais e critérios de aceitação.
 - [docs/api.md](docs/api.md): rotas, métodos, status, campos e exemplos de resposta.
 - [docs/processo-devops.md](docs/processo-devops.md): fluxo de desenvolvimento, validação local, revisão e publicação.
 - [docs/checklist.md](docs/checklist.md): conferência antes de integrar ou publicar alterações.
 
-Os documentos distinguem o que está implementado do que permanece fora do escopo. No momento, o projeto não possui suíte automatizada de testes, banco de dados, autenticação ou alertas persistentes.
+A documentação distingue claramente o que está implementado do que permanece fora do escopo. No momento, o projeto não possui suíte automatizada de testes, banco de dados, autenticação nem alertas persistentes.
 
 ## Deploy no Render
 
@@ -197,7 +198,7 @@ Os documentos distinguem o que está implementado do que permanece fora do escop
 4. Defina `/healthz` como **Health Check Path**.
 5. Não fixe manualmente a variável `PORT`; o Render fornece esse valor.
 
-Após a publicação, confira os logs e acesse a URL `.onrender.com` gerada pela plataforma.
+Após a publicação, confirme os logs e acesse a URL `.onrender.com` gerada pela plataforma.
 
 ## Métricas e limitações
 
@@ -229,7 +230,7 @@ Informações sensíveis não devem ser incluídas neste repositório. Em especi
 1. Crie uma branch para sua alteração.
 2. Faça a mudança mantendo o escopo do projeto.
 3. Execute o servidor localmente e valide `/`, `/api/stats` e `/healthz`.
-4. Atualize a documentação quando alterar comportamento, configuração ou estrutura.
+4. Atualize a documentação sempre que alterar comportamento, configuração ou estrutura.
 5. Abra um Pull Request descrevendo o problema, a solução e como validar.
 
 ## Licença

@@ -1,8 +1,8 @@
-# Documentação de Projeto
+# Documentação de projeto
 
 ## Contexto e objetivo
 
-O System Monitor é um painel web para observar recursos do ambiente em que o servidor está executando. A aplicação coleta métricas do sistema operacional e do processo Node.js, disponibiliza os dados em JSON e apresenta um painel visual com atualização periódica.
+O System Monitor é um painel web para acompanhar recursos do ambiente em que o serviço está sendo executado. A aplicação coleta métricas do sistema operacional e do processo Node.js, disponibiliza os dados em JSON e apresenta uma interface visual com atualização periódica.
 
 O projeto tem finalidade acadêmica e prática: demonstrar como um serviço web pode coletar, organizar e comunicar indicadores operacionais sem depender de um framework de servidor.
 
@@ -16,7 +16,7 @@ O projeto tem finalidade acadêmica e prática: demonstrar como um serviço web 
 - Painel web responsivo com atualização periódica.
 - Histórico de diagnóstico no cliente.
 - Endpoint de saúde em `GET /healthz`.
-- Servimento de arquivos estáticos com validações básicas.
+- Servição de arquivos estáticos com validações básicas.
 - Execução local e implantação no Render por `render.yaml`.
 
 ### Fora do escopo
@@ -55,7 +55,7 @@ O projeto tem finalidade acadêmica e prática: demonstrar como um serviço web 
 
 ### Diagnóstico rápido
 
-Uma pessoa acessa o painel e verifica os níveis de CPU, memória e disco. Em seguida, abre a aba de diagnóstico para observar a evolução recente dos indicadores.
+Um usuário acessa o painel e verifica os níveis de CPU, memória e disco. Em seguida, abre a aba de diagnóstico para observar a evolução recente dos indicadores.
 
 ### Integração com hospedagem
 
@@ -67,7 +67,7 @@ Um consumidor interno pode consultar `/api/stats` para obter dados atuais em JSO
 
 ## Critérios de qualidade documental
 
-A documentação deve acompanhar alterações de código. Quando uma rota, variável, métrica, requisito ou procedimento de deploy mudar, o README e os documentos relacionados devem ser atualizados.
+A documentação deve acompanhar alterações de código. Quando uma rota, variável, métrica, requisito ou procedimento de deploy mudar, o README e os documentos relacionados devem ser revisados e atualizados.
 
 Nenhuma funcionalidade deve ser descrita como implementada sem evidência no código. Testes automatizados, banco de dados, autenticação e alertas não devem ser adicionados à documentação como se já existissem.
 
@@ -78,7 +78,7 @@ Os artefatos principais do projeto estão organizados da seguinte forma:
 - `server.js`: ponto de entrada da aplicação.
 - `lib/metrics.js`: coleta e cache das métricas.
 - `lib/page.js`: geração do HTML do painel.
-- `public/`: assets do frontend.
+- `public/`: recursos estáticos do frontend.
 - `docs/`: documentação técnica e materiais complementares.
 - `render.yaml`: configuração de deploy.
 

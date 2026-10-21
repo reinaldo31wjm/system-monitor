@@ -59,10 +59,10 @@ Exemplo reduzido:
 ### Campos principais
 
 - `timestamp`: instante da coleta em milissegundos desde Unix Epoch.
-- `serverTime`: horário formatado no servidor.
+- `serverTime`: data e hora formatadas no servidor.
 - `uptime`: tempo de atividade do sistema operacional.
 - `processUptime`: tempo de atividade do processo Node.js.
-- `loadSupported`: informa se a carga do sistema é suportada pelo ambiente.
+- `loadSupported`: indica se a carga do sistema é suportada pelo ambiente.
 - `load1`, `load5`, `load15`: médias de carga nos últimos 1, 5 e 15 minutos.
 - `cores`: percentual aproximado de uso de cada núcleo.
 - `loadPercent`: média aproximada do uso dos núcleos.

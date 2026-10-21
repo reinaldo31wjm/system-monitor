@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O System Monitor é uma aplicação web compacta para observar recursos do ambiente de execução. O servidor coleta métricas do sistema operacional e do processo Node.js, enquanto o navegador consolida os dados em uma interface visual com atualização automática.
+O System Monitor é uma aplicação web compacta para observar recursos do ambiente de execução. O servidor coleta métricas do sistema operacional e do processo Node.js, enquanto o navegador organiza os dados em uma interface visual atualizada automaticamente.
 
 ## Fluxo principal
 
@@ -56,7 +56,7 @@ Implementa o efeito visual da chuva em `canvas`, com camadas de paralaxe, veloci
 
 ### `public/css/style.css`
 
-Define a identidade visual Chuva Cyberpunk, o layout responsivo, estados de normalidade/atenção/criticidade e os estados de foco para navegação por teclado.
+Define a identidade visual Chuva Cyberpunk, o layout responsivo, estados de normalidade, atenção e criticidade, além dos estados de foco para navegação por teclado.
 
 ## Decisões técnicas
 
@@ -81,7 +81,7 @@ O servidor também aplica restrições de arquivo estático e cabeçalhos que re
 
 ## Observações de operação
 
-A coleta é dependente do ambiente de execução. Em contêineres, por exemplo, a memória e o CPU podem refletir limites do próprio ambiente e não necessariamente o host físico.
+A coleta é dependente do ambiente de execução. Em contêineres, por exemplo, a memória e a CPU podem refletir limites do próprio ambiente e não necessariamente o host físico.
 
-Esse comportamento é documentado como parte da interpretação das métricas e da operação do serviço.
+Esse comportamento é parte da interpretação das métricas e da operação do serviço.
 
