@@ -8,7 +8,7 @@
 
 O **System Monitor** apresenta indicadores do ambiente em que está sendo executado, permitindo acompanhar CPU, memória, armazenamento, carga do sistema, uptime e informações do processo Node.js. O projeto foi construído sem Express ou outras dependências de runtime, usando apenas módulos nativos do Node.js.
 
-**Acesso público:** [sistemas-operacionais-pfph.onrender.com](https://sistemas-operacionais-pfph.onrender.com/)
+**Acesso público:** [system-monitor](https://system-monitor-i16u.onrender.com)
 
 ---
 
